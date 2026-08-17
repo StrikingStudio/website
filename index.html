@@ -137,9 +137,9 @@ em.s{font-family:var(--serif);font-style:italic;font-weight:500;font-size:1.02em
 .btn-ghost{background:transparent;color:var(--ink);border:1px solid rgba(69,59,49,.35)}
 .btn-ghost:hover{background:var(--ink);color:var(--cream);border-color:var(--ink)}
 .valueline{display:flex;flex-direction:row;border-bottom:1px solid var(--line);background:var(--sand);overflow:hidden}
-.valueline div{flex:1;padding:18px 8px;text-align:center;border-right:1px solid var(--line);min-width:0}
+.valueline div{flex:1;padding:14px 8px;text-align:center;border-right:1px solid var(--line);min-width:0;display:flex;align-items:center;justify-content:center}
 .valueline div:last-child{border-right:0}
-.valueline span{font-size:clamp(.5rem,1.6vw,.7rem);letter-spacing:clamp(.1em,.4vw,.24em);
+.valueline span{font-size:clamp(.52rem,1.6vw,.7rem);line-height:1.5;letter-spacing:clamp(.1em,.4vw,.24em);
   text-transform:uppercase;color:var(--ink);white-space:nowrap}
 /* ---------- coaches editorial (Rania) ---------- */
 .crew2{margin-top:clamp(48px,6vw,80px);display:flex;flex-direction:column;gap:clamp(56px,8vw,110px)}
@@ -418,16 +418,15 @@ footer a:hover{color:var(--ink)}
 .vphoto2{margin-top:28px;border-radius:var(--r);overflow:hidden;aspect-ratio:4/3;background-size:cover;background-position:center 25%}
 @media(max-width:860px){.rev-grid{grid-template-columns:1fr}.rphoto{aspect-ratio:4/3}.faq-photo{display:none}.vphoto2{display:none}}
 
-.hero-pts{list-style:none;margin-top:22px;display:flex;flex-direction:column;gap:9px}
-.hero-pts li{font-size:.95rem;color:var(--ink-soft);display:flex;align-items:baseline;gap:10px}
-.hero-pts li:before{content:"";width:7px;height:7px;border-radius:50%;background:var(--orange);flex:0 0 auto;transform:translateY(-1px)}
-#soundbtn{position:absolute;right:clamp(30px,3.5vw,52px);bottom:clamp(30px,3.5vw,52px);z-index:5;
-  width:46px;height:46px;border-radius:50%;border:0;cursor:pointer;background:rgba(20,16,12,.55);
-  color:#fff;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(6px);
-  transition:background .2s}
+#soundbtn{position:absolute;left:50%;transform:translateX(-50%);bottom:clamp(26px,3.5vw,48px);z-index:5;
+  display:flex;align-items:center;gap:10px;padding:13px 22px;border-radius:999px;border:0;cursor:pointer;
+  background:rgba(20,16,12,.62);color:#fff;font-family:var(--f);font-weight:600;font-size:.72rem;
+  letter-spacing:.14em;text-transform:uppercase;backdrop-filter:blur(8px);transition:background .2s,color .2s}
 #soundbtn:hover{background:var(--orange);color:var(--ink)}
+#soundbtn .ic{display:flex}
+#soundbtn.on{background:var(--orange);color:var(--ink)}
 #soundbtn svg{width:20px;height:20px;display:block}
-@media(max-width:899px){#soundbtn{right:14px;bottom:14px}}
+@media(max-width:899px){#soundbtn{bottom:14px;padding:11px 18px}}
 .foundation{margin-top:clamp(24px,3vw,40px);display:grid;grid-template-columns:minmax(180px,260px) 1fr;
   gap:clamp(20px,3vw,40px);align-items:center;background:var(--paper);border:1px solid var(--line);
   border-radius:var(--r);overflow:hidden}
@@ -468,13 +467,12 @@ footer a:hover{color:var(--ink)}
         <span class="h-up"><span><span class="roto"><span>strong.</span><span>confident.</span><span>clear.</span></span></span></span>
       </h1>
       <p class="hero-sub h-fade">Hit hard – we'll show you how. 55 minutes on the heavy bag + strength training, no matter your level.</p>
-      <ul class="hero-pts h-fade"><li>Heavy bag + strength training: fit in weeks</li><li>Playlists, energy, endorphins</li><li>Coaches with pro careers – no contact</li></ul>
       <div class="hero-cta h-fade">
         <a href="#kursplan" class="btn" id="heroCta" data-cta="hero">Free Trial Class</a>
       </div>
     </div>
     <div class="hero-vid">
-      <button id="soundbtn" type="button" aria-label="Sound on" data-cta="trailer-sound"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" fill="currentColor" stroke="none"/><path class="w1" d="M15.5 8.5a5 5 0 0 1 0 7"/><path class="w2" d="M18.5 5.5a9 9 0 0 1 0 13"/></svg></button>
+      <button id="soundbtn" type="button" data-cta="trailer-sound"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" fill="currentColor" stroke="none"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M18.5 5.5a9 9 0 0 1 0 13"/></svg></span><span class="lb">Play with sound</span></button>
       <video id="trailer" src="striking-trailer-loop.mp4" poster="trailer-poster.jpg"
         autoplay muted loop playsinline preload="auto" aria-label="Training at Striking Studio Zürich"></video>
     </div>
@@ -483,7 +481,7 @@ footer a:hover{color:var(--ink)}
 <div class="valueline">
   <div><span>No contact</span></div>
   <div><span>Super fun</span></div>
-  <div><span>Strength &amp; endurance</span></div>
+  <div><span>Strength &amp;<br>endurance</span></div>
   <div><span>Gloves included</span></div>
 </div>
 
@@ -557,7 +555,7 @@ footer a:hover{color:var(--ink)}
       </article>
   </div>
 
-  <div class="foundation fx"><div class="fimg" role="img" aria-label="Strength training at Striking Studio" style="background-image:url('fx-strength.jpg')"></div><div class="ftxt"><span class="kicker" style="margin-bottom:8px">The foundation</span><h3>Strength &amp; endurance – built into every class.</h3><p>Squats, push-ups and core between the rounds. Whichever class you pick: you get strong, not just fast.</p></div></div>
+  <div class="foundation fx"><div class="fimg" role="img" aria-label="Strength training at Striking Studio" style="background-image:url('fx-strength.jpg')"></div><div class="ftxt"><span class="kicker" style="margin-bottom:8px">The foundation</span><h3>Strength &amp; endurance – built into every class.</h3><p>Squats, push-ups and core between the rounds. Whichever class you pick: you get in top shape, not just skilled.</p></div></div>
 </div></section>
 
 
@@ -898,9 +896,10 @@ MountBsportWidget({
 (function(){
   var v=document.getElementById('trailer'),b=document.getElementById('soundbtn');
   if(!v||!b)return;
+  var lb=b.querySelector('.lb');
   b.addEventListener('click',function(){
-    if(v.muted){v.currentTime=0;v.muted=false;v.play();b.style.background='var(--orange)';b.style.color='var(--ink)';}
-    else{v.muted=true;b.style.background='';b.style.color='';}
+    if(v.muted){v.currentTime=0;v.muted=false;v.volume=1;v.play();lb.textContent='Mute';b.classList.add('on');}
+    else{v.muted=true;lb.textContent='Play with sound';b.classList.remove('on');}
   });
 })();
 </script>
