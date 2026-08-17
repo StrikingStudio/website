@@ -12,9 +12,9 @@
 <style>
 /* ================= TOKENS ================= */
 :root{
-  --orange:#FFC23A;
-  --orange-deep:#FFC23A;
-  --cream:#F4EFE8;
+  --orange:#EAA31D;
+  --orange-deep:#EAA31D;
+  --cream:#F0EEE9;
   --paper:#F7F3EC;
   --sand:#E6DDD0;
   --line:#DCD3C6;
@@ -36,7 +36,7 @@ a{color:inherit;text-decoration:none}
 
 /* ---------- type ---------- */
 h1{font-size:clamp(3rem,9vw,7rem);font-weight:600;line-height:.92;letter-spacing:-.03em;text-transform:uppercase}
-h2{font-size:clamp(2.3rem,5vw,3.6rem);font-weight:600;line-height:.95;letter-spacing:-.03em;text-transform:uppercase}
+h2{text-wrap:balance;font-size:clamp(2.3rem,5vw,3.6rem);font-weight:600;line-height:.95;letter-spacing:-.03em;text-transform:uppercase}
 h3{font-size:1.18rem;font-weight:600;letter-spacing:-.008em}
 em.s{font-family:var(--serif);font-style:italic;font-weight:500;font-size:1.02em;letter-spacing:-.02em;color:var(--orange-deep);text-transform:none}
 .kicker{display:inline-block;font-size:.6875rem;font-weight:500;letter-spacing:.28em;text-transform:uppercase;color:var(--orange-deep);margin-bottom:20px}
@@ -88,6 +88,7 @@ em.s{font-family:var(--serif);font-style:italic;font-weight:500;font-size:1.02em
   backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
 .nav-in{display:flex;align-items:center;justify-content:space-between;gap:24px;height:78px}
 .logo{display:flex;align-items:center}
+.lgimg{height:46px;width:auto;display:block}
 .logo{gap:12px}
 .logo .lgs svg,.logo .lgs-svg{height:42px;width:auto;display:block}
 .logo .lgt{display:flex;flex-direction:column;align-items:flex-start;text-align:left;line-height:1}
@@ -114,8 +115,8 @@ em.s{font-family:var(--serif);font-style:italic;font-weight:500;font-size:1.02em
   .hero-in{grid-template-columns:1fr minmax(420px,46%)}
   .hero{min-height:92svh;display:flex}
   .hero-in{width:100%}
-  .hero-vid{display:flex;align-items:center;justify-content:flex-end}
-  .hero-vid video{height:92svh;width:auto;max-width:100%}
+  .hero-vid{display:flex;align-items:center;justify-content:center;padding:clamp(20px,2.5vw,40px)}
+  .hero-vid video{width:100%;max-width:min(720px,calc(92svh - clamp(40px,5vw,80px)));height:auto;aspect-ratio:1/1;object-fit:cover;border-radius:var(--r)}
   .hero-txt{padding-left:clamp(24px,5vw,80px)}
 }
 .h-eyebrow{font-size:.6875rem;font-weight:500;letter-spacing:.28em;text-transform:uppercase;color:var(--orange-deep)}
@@ -154,7 +155,7 @@ em.s{font-family:var(--serif);font-style:italic;font-weight:500;font-size:1.02em
 @media(min-width:900px){.crow{grid-template-columns:5fr 1fr 6fr}
 .crow .cimg{grid-column:1}.crow .ctxt{grid-column:3}
 .crow.alt .cimg{grid-column:3}.crow.alt .ctxt{grid-column:1;grid-row:1}}
-section{padding:clamp(68px,9vw,120px) 0}
+section{padding:clamp(54px,7vw,88px) 0}
 .sec-head{max-width:64ch;margin:0 0 clamp(40px,5vw,60px);text-align:left}
 .sec-head .lede{margin:16px 0 0}
 .sec-head.left{text-align:left;margin-left:0}
@@ -208,7 +209,7 @@ section{padding:clamp(68px,9vw,120px) 0}
 .course p{font-size:.96rem;color:var(--ink-soft)}
 
 /* ---------- reviews ---------- */
-.reviews{display:grid;grid-template-columns:1fr;gap:clamp(20px,3vw,32px)}
+.reviews{display:grid;grid-template-columns:1fr;gap:clamp(16px,2vw,24px)}
 .rev{border-top:2px solid var(--orange);padding-top:20px}
 .rev .stars{color:var(--orange-deep);font-size:.95rem;letter-spacing:.22em;margin-bottom:12px}
 .rev p{font-size:.98rem;color:var(--ink-soft)}
@@ -389,7 +390,7 @@ footer a:hover{color:var(--ink)}
 #floatcta{position:fixed;z-index:140;opacity:0;pointer-events:none;transform:translateY(14px);
   transition:opacity .4s var(--ease),transform .4s var(--ease)}
 #floatcta.on{opacity:1;pointer-events:auto;transform:none}
-@media(min-width:761px){#floatcta{right:26px;bottom:26px}
+@media(min-width:761px){#floatcta{display:none}
 #floatcta .btn{box-shadow:0 16px 40px -18px rgba(38,32,26,.55);padding:20px 34px}}
 @media(max-width:760px){#floatcta{left:0;right:0;bottom:0;padding:10px 14px;
   background:color-mix(in srgb,var(--cream) 94%,transparent);backdrop-filter:blur(12px);
@@ -403,14 +404,17 @@ footer a:hover{color:var(--ink)}
 .mapbox iframe{position:absolute;inset:0;width:100%;height:100%;border:0;filter:saturate(.85)}
 .mapbox a{position:absolute;inset:0;z-index:2}
 
-.strength{background:var(--paper);border-block:1px solid var(--line);padding:clamp(70px,9vw,110px) 0}
+.strength{background:var(--paper);border-block:1px solid var(--line);padding:clamp(56px,7vw,88px) 0}
+.tplist{margin-top:26px;display:flex;flex-direction:column;gap:20px}
+.tp h3{font-size:1.02rem;font-weight:600;letter-spacing:-.01em}
+.tp p{margin-top:4px;font-size:.96rem;color:var(--ink-soft);max-width:52ch}
 .strength-in{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,5vw,72px);align-items:center}
 .sphoto{border-radius:var(--r);overflow:hidden;aspect-ratio:4/3;background-size:cover;background-position:center 42%}
 @media(max-width:860px){.strength-in{grid-template-columns:1fr}}
 
-.rev-grid{display:grid;grid-template-columns:.72fr 1.28fr;gap:clamp(28px,4vw,64px);align-items:start}
-.rphoto{border-radius:var(--r);overflow:hidden;aspect-ratio:3/4;background-size:cover;background-position:center 30%}
-.faq-photo{margin-top:28px;border-radius:var(--r);overflow:hidden;aspect-ratio:3/4;background-size:cover;background-position:center 35%}
+.rev-grid{display:grid;grid-template-columns:.66fr 1.34fr;gap:clamp(28px,4vw,64px);align-items:start}
+.rphoto{border-radius:var(--r);overflow:hidden;aspect-ratio:3/4;max-height:600px;background-size:cover;background-position:center 30%}
+.faq-photo{margin-top:26px;max-width:340px;border-radius:var(--r);overflow:hidden;aspect-ratio:3/4;background-size:cover;background-position:center 35%}
 .vphoto2{margin-top:28px;border-radius:var(--r);overflow:hidden;aspect-ratio:4/3;background-size:cover;background-position:center 25%}
 @media(max-width:860px){.rev-grid{grid-template-columns:1fr}.rphoto{aspect-ratio:4/3}.faq-photo{display:none}.vphoto2{display:none}}
 </style>
@@ -421,9 +425,7 @@ footer a:hover{color:var(--ink)}
 <div id="floatcta"><a href="#kursplan" class="btn" data-cta="float">Free Trial Class</a></div>
 
 <nav class="nav" aria-label="Hauptnavigation"><div class="wrap nav-in">
-  <a href="/" class="logo" aria-label="Striking Studio">
-    <span class="lgs"><svg class="lgs-svg" xmlns="http://www.w3.org/2000/svg" viewBox="36 46 688 546"><path d="M0 0 C0.90057129 -0.02255859 1.80114258 -0.04511719 2.72900391 -0.06835938 C9.97706032 -0.04156929 17.39285558 1.35841685 22.75 6.5625 C24.47651137 12.67169408 23.29028789 18.45202829 20.5 24.0625 C19.860625 25.17625 19.22125 26.29 18.5625 27.4375 C19.68205078 27.57091797 19.68205078 27.57091797 20.82421875 27.70703125 C25.50807519 28.95650508 27.9689745 32.49650036 30.5625 36.4375 C31.38044996 40.22981343 30.96887837 41.66168675 29.1875 45.0625 C22.5416387 51.07542213 12.46068721 52.66444277 4 54.875 C-15.34686807 60.09408582 -34.37898422 66.26049825 -53.4375 72.4375 C-54.55499634 72.79904175 -55.67249268 73.1605835 -56.82385254 73.53308105 C-140.85701972 100.72241972 -224.08429202 128.33192301 -337.3125 192.3125 C-337.94913574 192.74087158 -338.58577148 193.16924316 -339.24169922 193.6105957 C-343.4356744 196.51746215 -346.99619883 199.65943541 -350.4375 203.4375 C-350.4375 204.0975 -350.4375 204.7575 -350.4375 205.4375 C-344.55861237 208.28803712 -338.98169803 210.282264 -332.5625 211.4765625 C-331.28499878 211.72220444 -331.28499878 211.72220444 -329.98168945 211.97280884 C-318.21320272 214.14414978 -306.31944314 215.43914216 -294.4375 216.8125 C-291.88801868 217.11371442 -289.33862222 217.4156478 -286.78930664 217.71826172 C-274.27908063 219.19790423 -261.7638295 220.63232371 -249.24609375 222.046875 C-121.14273407 236.52867796 -121.14273407 236.52867796 -95.8359375 267.390625 C-89.37918343 276.84129298 -88.27070513 287.24984834 -89.4375 298.4375 C-94.6747814 325.4005137 -119.59116121 348.25607619 -140.4375 364.4375 C-141.43136719 365.22511719 -142.42523437 366.01273437 -143.44921875 366.82421875 C-201.7535444 412.72877656 -273.22997335 448.23742892 -414.4375 504.4375 C-416.25556152 505.05383301 -416.25556152 505.05383301 -418.11035156 505.68261719 C-462.12649487 520.48483006 -509.76649799 534.00806655 -556.4375 535.4375 C-552.96207997 532.43878211 -549.10445423 531.01919793 -544.84375 529.49609375 C-543.26261487 528.91631634 -541.68156428 528.33630833 -540.10058594 527.75610352 C-539.26168823 527.45084747 -538.42279053 527.14559143 -537.55847168 526.83108521 C-494.59948787 511.16038981 -452.31659882 493.50719374 -411.375 473.125 C-410.55922485 472.72033508 -409.74344971 472.31567017 -408.9029541 471.89874268 C-393.14361615 464.05745455 -377.74619378 455.53845639 -363.0625 445.8125 C-362.24233398 445.27471924 -361.42216797 444.73693848 -360.57714844 444.18286133 C-353.78615057 439.71254257 -347.07861914 435.12748742 -340.4375 430.4375 C-341.27925781 430.86417969 -342.12101562 431.29085938 -342.98828125 431.73046875 C-347.46053223 433.98799108 -351.94822127 436.21407497 -356.4375 438.4375 C-357.8292041 439.12900146 -357.8292041 439.12900146 -359.24902344 439.83447266 C-437.74402392 478.69376815 -521.68741015 506.81184674 -620.4375 528.4375 C-622.25701172 528.82252686 -622.25701172 528.82252686 -624.11328125 529.21533203 C-627.13512625 529.84695445 -630.15933286 530.46201283 -633.1875 531.0625 C-634.41098145 531.31012085 -634.41098145 531.31012085 -635.65917969 531.56274414 C-639.2767356 532.2431433 -641.91835717 532.48511729 -645.4375 531.4375 C-636.13195051 527.47697863 -626.72866827 523.79410126 -617.30029297 520.13870239 C-535.01137043 488.21253042 -453.94054544 453.54874557 -291.00976562 373.81347656 C-288.45208762 372.44530333 -285.88911068 371.08738196 -283.32478333 369.73171997 C-254.91500378 354.71167119 -226.39242093 339.49527904 -199.8125 321.375 C-199.06129883 320.86324219 -198.31009766 320.35148437 -197.53613281 319.82421875 C-193.40987637 316.9590247 -189.57969972 313.93067368 -185.86962891 310.54125977 C-184.4375 309.4375 -184.4375 309.4375 -182.4375 309.4375 C-182.169375 308.839375 -181.90125 308.24125 -181.625 307.625 C-180.4375 305.4375 -180.4375 305.4375 -178.875 303.9375 C-177.16174436 302.14975498 -176.95002786 300.81953423 -176.4375 298.4375 C-221.73941301 268.2039318 -300.42525037 273.56349181 -353.203125 269.0859375 C-354.47365723 268.97743469 -355.74418945 268.86893188 -357.05322266 268.75714111 C-363.03394809 268.24690831 -369.01507288 267.74488362 -374.99804688 267.26171875 C-386.35973985 266.32054262 -397.63627749 265.10019903 -408.91796875 263.4453125 C-410.01602844 263.28477386 -411.11408813 263.12423523 -412.24542236 262.95883179 C-421.84651608 261.49113986 -431.1704312 259.33788031 -440.4375 256.4375 C-441.42621094 256.13199219 -442.41492188 255.82648438 -443.43359375 255.51171875 C-454.94818059 251.43401015 -463.27481284 244.02214202 -468.56640625 233.109375 C-471.67605603 223.5712564 -469.7093555 212.26210013 -465.4375 203.4375 C-455.9638069 186.39785978 -440.31655471 173.30656748 -424.4375 162.4375 C-423.59864258 161.86177246 -422.75978516 161.28604492 -421.89550781 160.69287109 C-407.22674899 150.71121839 -392.01153414 141.91658411 -376.4375 133.4375 C-374.58558255 132.42121946 -372.73400802 131.40431372 -370.8828125 130.38671875 C-366.36839963 127.90950612 -361.84373776 125.45170292 -357.31542969 123 C-354.26050754 121.34140637 -351.21224154 119.6709504 -348.1640625 118 C-257.05498151 68.2143664 -151.53747205 35.25754079 -28.4375 3.4375 C-27.56319336 3.2327002 -26.68888672 3.02790039 -25.78808594 2.81689453 C-17.20268365 0.85518595 -8.79398935 0.14644445 0 0 Z " fill="#FFC23A" transform="translate(685.4375,52.5625)"/></svg></span><span class="lgt"><span class="l1">Striking</span><span class="l2">Studio</span></span>
-  </a>
+  <a href="/" class="logo" aria-label="Striking Studio"><img class="lgimg" src="logo.png" alt="Striking Studio"></a>
   <div class="nav-links">
     <a href="#lektion">How it works</a>
     <a href="#kurse">Classes</a>
@@ -446,7 +448,7 @@ footer a:hover{color:var(--ink)}
         <span class="h-up"><span>Striking makes you</span></span>
         <span class="h-up"><span><span class="roto"><span>strong.</span><span>confident.</span><span>clear.</span></span></span></span>
       </h1>
-      <p class="hero-sub h-fade">Hit hard – we'll show you how. 55 minutes on the heavy bag, no matter your level.</p>
+      <p class="hero-sub h-fade">Hit hard – we'll show you how. 55 minutes on the heavy bag + strength training, no matter your level.</p>
       <div class="hero-cta h-fade">
         <a href="#kursplan" class="btn" id="heroCta" data-cta="hero">Free Trial Class</a>
       </div>
@@ -463,6 +465,20 @@ footer a:hover{color:var(--ink)}
   <div><span>55 minutes</span></div>
   <div><span>Gloves included</span></div>
 </div>
+
+<!-- ============ STRENGTH ============ -->
+<section class="strength"><div class="wrap strength-in">
+  <div>
+    <span class="kicker fx">This is Striking</span>
+    <h2><span class="rv"><span>Get in <em class="s">top shape.</em></span></span></h2>
+    <div class="tplist fx">
+<div class="tp"><h3>Fit and strong</h3><p>Heavy bag plus strength training in every class. Endurance, power, an athletic body – you feel it within two weeks.</p></div>
+<div class="tp"><h3>Energy that hooks you</h3><p>Great playlists, strong coaching and a team that makes you feel welcome. You leave full of endorphins.</p></div>
+<div class="tp"><h3>Real martial arts know-how</h3><p>Coaches from boxing, kickboxing and Muay Thai, some with professional careers. Real combinations, individual feedback – no contact, at your pace.</p></div>
+    </div>
+  </div>
+  <div class="sphoto fx" role="img" aria-label="Strength training at Striking Studio" style="background-image:url('fx-strength.jpg')"></div>
+</div></section>
 
 <!-- ============ DIE STUNDE ============ -->
 <section id="lektion"><div class="wrap">
@@ -497,15 +513,7 @@ footer a:hover{color:var(--ink)}
 
 <!-- ============ KURSE ============ -->
 
-<!-- ============ STRENGTH ============ -->
-<section class="strength"><div class="wrap strength-in">
-  <div>
-    <span class="kicker fx">Strength</span>
-    <h2><span class="rv"><span>You get <em class="s">strong</em> here.</span></span></h2>
-    <p class="lede fx" style="margin-top:16px">Strength is built into every class: squats, push-ups, core – no machines, right inside the rounds. You don't just learn to hit, you build a body that can.</p>
-  </div>
-  <div class="sphoto fx" role="img" aria-label="Strength work at Striking Studio" style="background-image:url('fx-strength.jpg')"></div>
-</div></section>
+
 
 <section id="kurse" class="pathsec" style="background:var(--sand);border-block:1px solid var(--line)"><div class="wrap">
   <div class="sec-head left" style="margin-bottom:0;text-align:left;margin-left:0">
@@ -541,51 +549,7 @@ footer a:hover{color:var(--ink)}
   </div>
 </div></section>
 
-<!-- ============ COACHES ============ -->
-<section id="coaches"><div class="wrap">
-  <div class="sec-head left" style="margin-bottom:0;text-align:left;margin-left:0">
-    <span class="kicker fx">Coaches</span>
-    <h2><span class="rv"><span>The coaches who push you<br>to <em class="s">grow.</em></span></span></h2>
-  </div>
-  <div class="carou" id="tcarou" style="margin-top:34px">
-      <article class="tcard">
-        <img src="Natassja profile.jpg" alt="Natassja Eckerström" loading="lazy">
-        <div class="tb"><span class="kicker">Mobility · Body control · Joy</span>
-          <h3>Natassja Eckerström</h3>
-          <p class="cred">Background in gymnastics and dance · movement-quality specialist</p>
-          <p class="human">Helps you understand how your body actually moves: coordination, mobility, and a lot of fun.</p></div>
-      </article>
-      <article class="tcard">
-        <img src="quentz profile.jpg" alt="Quentz Alexis II" loading="lazy">
-        <div class="tb"><span class="kicker">Energy · Pace · Motivation</span>
-          <h3>Quentz Alexis II</h3>
-          <p class="cred">Born in NYC, trained in Thailand · active Muay Thai competitor</p>
-          <p class="human">Energetic sessions that lift your pace and sharpen your timing until combinations feel effortless.</p></div>
-      </article>
-      <article class="tcard">
-        <img src="Gabriela.png" alt="Gabriela Kiser" loading="lazy">
-        <div class="tb"><span class="kicker">Power · Fight experience · Discipline</span>
-          <h3>Gabriela Kiser</h3>
-          <p class="cred">Six years kickboxing · three full-contact fights · BJJ and strength base</p>
-          <p class="human">Trains you to find your limit, cross it, and meet the strength you didn't know was there.</p></div>
-      </article>
-      <article class="tcard">
-        <img src="Jean Danilo.png" alt="Jean Danilo Speville" loading="lazy">
-        <div class="tb"><span class="kicker">Muay Thai · Real-world experience · Technique</span>
-          <h3>Jean Danilo Speville</h3>
-          <p class="cred">17 years Muay Thai · 3 years MMA · 7 years police and close protection</p>
-          <p class="human">Clean technique and natural body mechanics, until you find your own fighting style.</p></div>
-      </article>
-      <article class="tcard">
-        <img src="Ruben profile.jpg" alt="Ruben Crawford" loading="lazy">
-        <div class="tb"><span class="kicker">Efficiency · Fight IQ · Clean technique</span>
-          <h3>Ruben Crawford</h3>
-          <p class="cred">Former Bellator MMA fighter · ranked #1 in Germany</p>
-          <p class="human">Teaches striking the way it works under pressure: efficient, precise, no wasted movement.</p></div>
-      </article>
-  </div>
-  <div class="car-nav"><button type="button" data-car="tcarou" data-dir="-1" aria-label="zurück">←</button><button type="button" data-car="tcarou" data-dir="1" aria-label="weiter">→</button></div>
-</div></section>
+
 
 <!-- ============ REVIEWS ============ -->
 <section id="reviews"><div class="wrap">
@@ -654,12 +618,57 @@ footer a:hover{color:var(--ink)}
   <p class="pricing-foot fx">Single class, no membership: CHF 39 · <a href="preise-en.html" class="arrowlink" data-cta="preise-page">See all prices →</a></p>
 </div></section>
 
+<!-- ============ COACHES ============ -->
+<section id="coaches"><div class="wrap">
+  <div class="sec-head left" style="margin-bottom:0;text-align:left;margin-left:0">
+    <span class="kicker fx">Coaches</span>
+    <h2><span class="rv"><span>The coaches who push you to <em class="s">grow.</em></span></span></h2>
+  </div>
+  <div class="carou" id="tcarou" style="margin-top:34px">
+      <article class="tcard">
+        <img src="Natassja profile.jpg" alt="Natassja Eckerström" loading="lazy">
+        <div class="tb"><span class="kicker">Mobility · Body control · Joy</span>
+          <h3>Natassja Eckerström</h3>
+          <p class="cred">Background in gymnastics and dance · movement-quality specialist</p>
+          <p class="human">Helps you understand how your body actually moves: coordination, mobility, and a lot of fun.</p></div>
+      </article>
+      <article class="tcard">
+        <img src="quentz profile.jpg" alt="Quentz Alexis II" loading="lazy">
+        <div class="tb"><span class="kicker">Energy · Pace · Motivation</span>
+          <h3>Quentz Alexis II</h3>
+          <p class="cred">Born in NYC, trained in Thailand · active Muay Thai competitor</p>
+          <p class="human">Energetic sessions that lift your pace and sharpen your timing until combinations feel effortless.</p></div>
+      </article>
+      <article class="tcard">
+        <img src="Gabriela.png" alt="Gabriela Kiser" loading="lazy">
+        <div class="tb"><span class="kicker">Power · Fight experience · Discipline</span>
+          <h3>Gabriela Kiser</h3>
+          <p class="cred">Six years kickboxing · three full-contact fights · BJJ and strength base</p>
+          <p class="human">Trains you to find your limit, cross it, and meet the strength you didn't know was there.</p></div>
+      </article>
+      <article class="tcard">
+        <img src="Jean Danilo.png" alt="Jean Danilo Speville" loading="lazy">
+        <div class="tb"><span class="kicker">Muay Thai · Real-world experience · Technique</span>
+          <h3>Jean Danilo Speville</h3>
+          <p class="cred">17 years Muay Thai · 3 years MMA · 7 years police and close protection</p>
+          <p class="human">Clean technique and natural body mechanics, until you find your own fighting style.</p></div>
+      </article>
+      <article class="tcard">
+        <img src="Ruben profile.jpg" alt="Ruben Crawford" loading="lazy">
+        <div class="tb"><span class="kicker">Efficiency · Fight IQ · Clean technique</span>
+          <h3>Ruben Crawford</h3>
+          <p class="cred">Former Bellator MMA fighter · ranked #1 in Germany</p>
+          <p class="human">Teaches striking the way it works under pressure: efficient, precise, no wasted movement.</p></div>
+      </article>
+  </div>
+  <div class="car-nav"><button type="button" data-car="tcarou" data-dir="-1" aria-label="zurück">←</button><button type="button" data-car="tcarou" data-dir="1" aria-label="weiter">→</button></div>
+</div></section>
+
 <!-- ============ FAQ ============ -->
 <section id="faq"><div class="wrap faq-grid">
   <div class="sec-head left" style="margin-bottom:0">
     <span class="kicker fx">FAQ</span>
-    <h2><span class="rv"><span>What’s <em class="s">really</em></span></span>
-        <span class="rv"><span>holding you back.</span></span></h2>
+    <h2><span class="rv"><span>What’s <em class="s">really</em> holding you back.</span></span></h2>
     <p class="lede fx" style="margin-top:16px">The five questions new members ask us most often – usually only after their
     first class, because they didn’t dare ask before.</p>
   
