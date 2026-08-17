@@ -417,6 +417,25 @@ footer a:hover{color:var(--ink)}
 .faq-photo{margin-top:26px;max-width:340px;border-radius:var(--r);overflow:hidden;aspect-ratio:3/4;background-size:cover;background-position:center 35%}
 .vphoto2{margin-top:28px;border-radius:var(--r);overflow:hidden;aspect-ratio:4/3;background-size:cover;background-position:center 25%}
 @media(max-width:860px){.rev-grid{grid-template-columns:1fr}.rphoto{aspect-ratio:4/3}.faq-photo{display:none}.vphoto2{display:none}}
+
+.hero-pts{list-style:none;margin-top:22px;display:flex;flex-direction:column;gap:9px}
+.hero-pts li{font-size:.95rem;color:var(--ink-soft);display:flex;align-items:baseline;gap:10px}
+.hero-pts li:before{content:"";width:7px;height:7px;border-radius:50%;background:var(--orange);flex:0 0 auto;transform:translateY(-1px)}
+#soundbtn{position:absolute;right:clamp(30px,3.5vw,52px);bottom:clamp(30px,3.5vw,52px);z-index:5;
+  width:46px;height:46px;border-radius:50%;border:0;cursor:pointer;background:rgba(20,16,12,.55);
+  color:#fff;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(6px);
+  transition:background .2s}
+#soundbtn:hover{background:var(--orange);color:var(--ink)}
+#soundbtn svg{width:20px;height:20px;display:block}
+@media(max-width:899px){#soundbtn{right:14px;bottom:14px}}
+.foundation{margin-top:clamp(24px,3vw,40px);display:grid;grid-template-columns:minmax(180px,260px) 1fr;
+  gap:clamp(20px,3vw,40px);align-items:center;background:var(--paper);border:1px solid var(--line);
+  border-radius:var(--r);overflow:hidden}
+.foundation .fimg{aspect-ratio:1/1;background-size:cover;background-position:center 35%;height:100%}
+.foundation .ftxt{padding:clamp(18px,2.5vw,30px) clamp(18px,3vw,40px) clamp(18px,2.5vw,30px) 0}
+.foundation h3{font-size:clamp(1.2rem,2vw,1.6rem);font-weight:600;letter-spacing:-.01em}
+.foundation p{margin-top:8px;font-size:.96rem;color:var(--ink-soft);max-width:60ch}
+@media(max-width:700px){.foundation{grid-template-columns:1fr}.foundation .fimg{aspect-ratio:16/9}.foundation .ftxt{padding:18px 20px 22px}}
 </style>
 </head>
 <body>
@@ -426,11 +445,7 @@ footer a:hover{color:var(--ink)}
 
 <nav class="nav" aria-label="Hauptnavigation"><div class="wrap nav-in">
   <a href="/" class="logo" aria-label="Striking Studio"><img class="lgimg" src="logo.png" alt="Striking Studio"></a>
-  <div class="nav-links">
-    <a href="#lektion">Ablauf</a>
-    <a href="#kurse">Kurse</a>
-    <a href="#coaches">Trainer</a>
-    <a href="#kursplan">Kursplan</a>
+  <div class="nav-links"><a href="#kurse">Kurse</a><a href="#kursplan">Kursplan</a><a href="#lektion">Ablauf</a><a href="#coaches">Trainer</a>
     <a href="preise.html">Preise</a>
   </div>
   <button class="burger" id="burger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
@@ -449,11 +464,13 @@ footer a:hover{color:var(--ink)}
         <span class="h-up"><span><span class="roto"><span>stark.</span><span>klar.</span><span>selbstsicher.</span></span></span></span>
       </h1>
       <p class="hero-sub h-fade">Schlag zu – wir zeigen dir, wie. 55 Minuten am Sandsack + Krafttraining, egal welches Level.</p>
+      <ul class="hero-pts h-fade"><li>Sandsack + Krafttraining: topfit in Wochen</li><li>Playlists, Energie, Endorphine</li><li>Coaches mit Profi-Vergangenheit – ohne Kontakt</li></ul>
       <div class="hero-cta h-fade">
         <a href="#kursplan" class="btn" id="heroCta" data-cta="hero">Gratis Probetraining</a>
       </div>
     </div>
     <div class="hero-vid">
+      <button id="soundbtn" type="button" aria-label="Ton an" data-cta="trailer-sound"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" fill="currentColor" stroke="none"/><path class="w1" d="M15.5 8.5a5 5 0 0 1 0 7"/><path class="w2" d="M18.5 5.5a9 9 0 0 1 0 13"/></svg></button>
       <video id="trailer" src="striking-trailer-loop.mp4" poster="trailer-poster.jpg"
         autoplay muted loop playsinline preload="auto" aria-label="Training im Striking Studio Zürich"></video>
     </div>
@@ -461,53 +478,42 @@ footer a:hover{color:var(--ink)}
 </header>
 <div class="valueline">
   <div><span>Kein Kontakt</span></div>
-  <div><span>Alle Level</span></div>
-  <div><span>55 Minuten</span></div>
+  <div><span>Richtig Spass</span></div>
+  <div><span>Kraft &amp; Ausdauer</span></div>
   <div><span>Handschuhe inklusive</span></div>
 </div>
 
-<!-- ============ KRAFT ============ -->
-<section class="strength"><div class="wrap strength-in">
-  <div>
-    <span class="kicker fx">Das ist Striking</span>
-    <h2><span class="rv"><span>Du wirst hier <em class="s">topfit.</em></span></span></h2>
-    <div class="tplist fx">
-<div class="tp"><h3>Topfit und stark</h3><p>Sandsack plus Krafttraining in jeder Stunde. Ausdauer, Kraft, ein athletischer Körper – du spürst es nach zwei Wochen.</p></div>
-<div class="tp"><h3>Energie, die süchtig macht</h3><p>Packende Playlists, starkes Coaching und ein Team, das dich willkommen heisst. Du gehst mit Endorphinen raus.</p></div>
-<div class="tp"><h3>Echtes Kampfsport-Know-how</h3><p>Coaches aus Boxing, Kickboxing und Muay Thai, einige mit Profi-Vergangenheit. Echte Kombinationen, individuelles Feedback – ohne Kontakt, in deinem Tempo.</p></div>
-    </div>
-  </div>
-  <div class="sphoto fx" role="img" aria-label="Krafttraining im Striking Studio" style="background-image:url('fx-strength.jpg')"></div>
-</div></section>
 
-<!-- ============ DIE STUNDE ============ -->
-<section id="lektion"><div class="wrap">
+
+
+
+<!-- ============ REVIEWS ============ -->
+<section id="reviews"><div class="wrap">
   <div class="sec-head">
-    <span class="kicker fx">Ablauf</span>
-    <h2><span class="rv"><span>Vom ersten Seilsprung bis zum <em class="s">Durchatmen.</em></span></span></h2>
+    <span class="kicker fx">Reviews</span>
+    <h2><span class="rv"><span>Was unsere <em class="s">Members</em> sagen.</span></span></h2>
   </div>
-  <div class="journey" id="jr">
-    <svg class="path" viewBox="0 0 900 1330" preserveAspectRatio="none" aria-hidden="true">
-      <path id="swoosh" pathLength="1"
-        d="M740,75 C520,150 360,190 230,270 C90,360 480,380 690,455 C880,525 380,555 230,645 C90,730 480,750 690,835 C880,905 380,935 230,1025 C90,1110 480,1130 690,1215"/>
-    </svg>
-    <div class="stop"><span class="rn"><b>01</b>Coach kennenlernen</span>
-      <p class="ds">Dein Coach begrüsst dich und richtet dich mit Handschuhen und Bandagen ein.</p></div>
-    <div class="stop"><span class="rn"><b>02</b>Warm-Up</span>
-      <p class="ds">Seilspringen, ankommen. Stand, Fussarbeit, die Kombination des Tages.</p></div>
-    <div class="stop"><span class="rn"><b>03</b>Technik</span>
-      <p class="ds">Shadow Boxing. Timing schärfen, Hände oben.</p></div>
-    <div class="stop"><span class="rn"><b>04</b>Heavy Bag</span>
-      <p class="ds">Die Kombination in den Sack. Runde für Runde.</p></div>
-    <div class="stop"><span class="rn"><b>05</b>Kraft</span>
-      <p class="ds">Squats, Push-ups, Rows. Kurz und knackig, ohne Geräte.</p></div>
-    <div class="stop"><span class="rn"><b>06</b>Finisher</span>
-      <p class="ds">Zwei Tabatas, alles raus. Schnelle Hände, Kicks, Abs.</p></div>
-    <div class="stop"><span class="rn"><b>07</b>Cool Down</span>
-      <p class="ds">Dehnen, atmen. Fertig.</p></div>
-  </div>
-  <p class="stunde-foot quiet">Du bestimmst das Tempo – und der Coach bleibt die ganze Zeit bei dir.</p>
-  <p class="stunde-foot quiet">Fitness Boxing, Fitness Kickboxing oder Fitness Muay Thai – gleicher Aufbau, freie Wahl, wechseln jederzeit.</p>
+  <div class="rev-grid"><div class="rphoto fx" role="img" aria-label="Members im Striking Studio" style="background-image:url('fx-members.jpg')"></div><div class="reviews">
+    <blockquote class="rev fx">
+      <div class="stars" aria-label="5 von 5 Sternen">★★★★★</div>
+      <p>«Super Studio! Die Trainer:innen sind top ausgebildet, gehen individuell auf das Level
+      jeder Person ein und erklären Technik wirklich sauber. Kann ich nur empfehlen»</p>
+      
+<footer>Sheyla Sampietro<span>Google Rezension</span></footer>
+    </blockquote>
+    <blockquote class="rev fx">
+      <div class="stars" aria-label="5 von 5 Sternen">★★★★★</div>
+      <p>«Great instructors, friendly atmosphere and amazing workout. Suitable for beginners
+      and more experienced people»</p>
+      <footer>Markus Chamber<span>Google Rezension</span></footer>
+    </blockquote>
+    <blockquote class="rev fx">
+      <div class="stars" aria-label="5 von 5 Sternen">★★★★★</div>
+      <p>«Fantastic club with a great atmosphere. Clean, well equipped, and everyone was super
+      welcoming and supportive. Highly recommended!»</p>
+      <footer>Paula Strunden<span>Google Rezension</span></footer>
+    </blockquote>
+  </div></div>
 </div></section>
 
 <!-- ============ KURSE ============ -->
@@ -546,38 +552,13 @@ footer a:hover{color:var(--ink)}
           <div class="more"><p>Fäuste, Ellbogen, Knie, Schienbeine: Muay Thai nutzt alles. Dein Sandsack, dein Tempo – und der Coach bleibt bei dir.</p><p class="bene">Full Striking · Max Intensity</p></div></div>
       </article>
   </div>
+
+  <div class="foundation fx"><div class="fimg" role="img" aria-label="Krafttraining im Striking Studio" style="background-image:url('fx-strength.jpg')"></div><div class="ftxt"><span class="kicker" style="margin-bottom:8px">Das Fundament</span><h3>Kraft &amp; Ausdauer – in jedem Kurs.</h3><p>Squats, Push-ups, Core zwischen den Runden. Egal welchen Kurs du wählst: Du wirst stark, nicht nur schnell.</p></div></div>
 </div></section>
 
 
 
-<!-- ============ REVIEWS ============ -->
-<section id="reviews"><div class="wrap">
-  <div class="sec-head">
-    <span class="kicker fx">Reviews</span>
-    <h2><span class="rv"><span>Was unsere <em class="s">Members</em> sagen.</span></span></h2>
-  </div>
-  <div class="rev-grid"><div class="rphoto fx" role="img" aria-label="Members im Striking Studio" style="background-image:url('fx-members.jpg')"></div><div class="reviews">
-    <blockquote class="rev fx">
-      <div class="stars" aria-label="5 von 5 Sternen">★★★★★</div>
-      <p>«Super Studio! Die Trainer:innen sind top ausgebildet, gehen individuell auf das Level
-      jeder Person ein und erklären Technik wirklich sauber. Kann ich nur empfehlen»</p>
-      
-<footer>Sheyla Sampietro<span>Google Rezension</span></footer>
-    </blockquote>
-    <blockquote class="rev fx">
-      <div class="stars" aria-label="5 von 5 Sternen">★★★★★</div>
-      <p>«Great instructors, friendly atmosphere and amazing workout. Suitable for beginners
-      and more experienced people»</p>
-      <footer>Markus Chamber<span>Google Rezension</span></footer>
-    </blockquote>
-    <blockquote class="rev fx">
-      <div class="stars" aria-label="5 von 5 Sternen">★★★★★</div>
-      <p>«Fantastic club with a great atmosphere. Clean, well equipped, and everyone was super
-      welcoming and supportive. Highly recommended!»</p>
-      <footer>Paula Strunden<span>Google Rezension</span></footer>
-    </blockquote>
-  </div></div>
-</div></section>
+
 
 <!-- ============ KURSPLAN ============ -->
 <section id="kursplan"><div class="wrap">
@@ -585,7 +566,7 @@ footer a:hover{color:var(--ink)}
     <span class="kicker fx">Kursplan</span>
     <h2><span class="rv"><span>Such dir deine</span></span>
         <span class="rv"><span>erste <em class="s">Lektion</em> aus.</span></span></h2>
-    <p class="lede fx">Wähle einen Termin, der dir passt – Fitness Boxing, Fitness Kickboxing oder Fitness Muay Thai. Deine erste Lektion ist gratis.</p>
+    <p class="lede fx">Wähle einen Termin, der dir passt – Fitness Boxing, Fitness Kickboxing oder Fitness Muay Thai. Deine erste Lektion ist gratis. Gratis, kein Abo, nichts mitbringen – komm wie du bist.</p>
   </div>
   <!-- BSPORT-WIDGET: Embed-Code hier einsetzen, ersetzt den Inhalt von #bsport-widget -->
   <div id="bsport-widget" class="fx">
@@ -594,27 +575,34 @@ footer a:hover{color:var(--ink)}
   </div>
 </div></section>
 
-<!-- ============ PATH + PRICING ============ -->
-<section class="pathsec" id="preise"><div class="wrap">
+<!-- ============ DIE STUNDE ============ -->
+<section id="lektion"><div class="wrap">
   <div class="sec-head">
-    <span class="kicker fx">Preise</span>
-    <h2><span class="rv"><span>Erst <em class="s">testen.</em></span></span>
-        <span class="rv"><span>Dann entscheiden.</span></span></h2>
-    <p class="lede fx">Kein Vertragsdruck, kein Verkaufsgespräch. Komm vorbei, trainier
-    gratis – und entscheid in Ruhe.</p>
+    <span class="kicker fx">Ablauf</span>
+    <h2><span class="rv"><span>Vom ersten Seilsprung bis zum <em class="s">Durchatmen.</em></span></span></h2>
   </div>
-  <div class="path">
-    <div class="pstep hi slide"><span class="n">Schritt 1</span><div class="v">Gratis</div>
-      <h3>Probetraining</h3><p>Eine ganze Lektion, kostenlos. Handschuhe und Bandagen
-      liegen für dich bereit.</p></div>
-    <div class="pstep slide"><span class="n">Schritt 2</span><div class="v">−50%</div>
-      <h3>Erster Monat</h3><p>Gefällt's dir? Erster Monat zum halben Preis –
-      ab CHF 59.50 statt CHF 119.</p></div>
-    <div class="pstep slide"><span class="n">Schritt 3</span><div class="v">Flexibel</div>
-      <h3>Mitgliedschaft</h3><p>Jederzeit kündbar. Keine Mindestlaufzeit,
-      kein Kleingedrucktes.</p></div>
+  <div class="journey" id="jr">
+    <svg class="path" viewBox="0 0 900 1330" preserveAspectRatio="none" aria-hidden="true">
+      <path id="swoosh" pathLength="1"
+        d="M740,75 C520,150 360,190 230,270 C90,360 480,380 690,455 C880,525 380,555 230,645 C90,730 480,750 690,835 C880,905 380,935 230,1025 C90,1110 480,1130 690,1215"/>
+    </svg>
+    <div class="stop"><span class="rn"><b>01</b>Coach kennenlernen</span>
+      <p class="ds">Dein Coach begrüsst dich und richtet dich mit Handschuhen und Bandagen ein.</p></div>
+    <div class="stop"><span class="rn"><b>02</b>Warm-Up</span>
+      <p class="ds">Seilspringen, ankommen. Stand, Fussarbeit, die Kombination des Tages.</p></div>
+    <div class="stop"><span class="rn"><b>03</b>Technik</span>
+      <p class="ds">Shadow Boxing. Timing schärfen, Hände oben.</p></div>
+    <div class="stop"><span class="rn"><b>04</b>Heavy Bag</span>
+      <p class="ds">Die Kombination in den Sack. Runde für Runde.</p></div>
+    <div class="stop"><span class="rn"><b>05</b>Kraft</span>
+      <p class="ds">Squats, Push-ups, Rows. Kurz und knackig, ohne Geräte.</p></div>
+    <div class="stop"><span class="rn"><b>06</b>Finisher</span>
+      <p class="ds">Zwei Tabatas, alles raus. Schnelle Hände, Kicks, Abs.</p></div>
+    <div class="stop"><span class="rn"><b>07</b>Cool Down</span>
+      <p class="ds">Dehnen, atmen. Fertig.</p></div>
   </div>
-  <p class="pricing-foot fx">Einzelne Lektion ohne Abo: CHF 39 · <a href="preise.html" class="arrowlink" data-cta="preise-page">Alle Preise ansehen →</a></p>
+  <p class="stunde-foot quiet">Du bestimmst das Tempo – und der Coach bleibt die ganze Zeit bei dir.</p>
+  <p class="stunde-foot quiet">Fitness Boxing, Fitness Kickboxing oder Fitness Muay Thai – gleicher Aufbau, freie Wahl, wechseln jederzeit.</p>
 </div></section>
 
 <!-- ============ COACHES ============ -->
@@ -662,6 +650,31 @@ footer a:hover{color:var(--ink)}
   </div>
   <div class="car-nav"><button type="button" data-car="tcarou" data-dir="-1" aria-label="zurück">←</button><button type="button" data-car="tcarou" data-dir="1" aria-label="weiter">→</button></div>
 </div></section>
+
+<!-- ============ PATH + PRICING ============ -->
+<section class="pathsec" id="preise"><div class="wrap">
+  <div class="sec-head">
+    <span class="kicker fx">Preise</span>
+    <h2><span class="rv"><span>Erst <em class="s">testen.</em></span></span>
+        <span class="rv"><span>Dann entscheiden.</span></span></h2>
+    <p class="lede fx">Kein Vertragsdruck, kein Verkaufsgespräch. Komm vorbei, trainier
+    gratis – und entscheid in Ruhe.</p>
+  </div>
+  <div class="path">
+    <div class="pstep hi slide"><span class="n">Schritt 1</span><div class="v">Gratis</div>
+      <h3>Probetraining</h3><p>Eine ganze Lektion, kostenlos. Handschuhe und Bandagen
+      liegen für dich bereit.</p></div>
+    <div class="pstep slide"><span class="n">Schritt 2</span><div class="v">−50%</div>
+      <h3>Erster Monat</h3><p>Gefällt's dir? Erster Monat zum halben Preis –
+      ab CHF 59.50 statt CHF 119.</p></div>
+    <div class="pstep slide"><span class="n">Schritt 3</span><div class="v">Flexibel</div>
+      <h3>Mitgliedschaft</h3><p>Jederzeit kündbar. Keine Mindestlaufzeit,
+      kein Kleingedrucktes.</p></div>
+  </div>
+  <p class="pricing-foot fx">Einzelne Lektion ohne Abo: CHF 39 · <a href="preise.html" class="arrowlink" data-cta="preise-page">Alle Preise ansehen →</a></p>
+</div></section>
+
+
 
 <!-- ============ FAQ ============ -->
 <section id="faq"><div class="wrap faq-grid">
@@ -727,8 +740,8 @@ footer a:hover{color:var(--ink)}
 
 <footer><div class="wrap foot">
   <div>
-    <a href="#lektion">Ablauf</a><a href="#kurse">Kurse</a><a href="#coaches">Trainer</a>
-    <a href="#kursplan">Kursplan</a><a href="preise.html">Preise</a>
+    <a href="#kurse">Kurse</a><a href="#kursplan">Kursplan</a><a href="#lektion">Ablauf</a>
+    <a href="#coaches">Trainer</a><a href="preise.html">Preise</a>
     <a href="https://www.strikingstudio.com/de/career">Karriere</a><a href="https://www.strikingstudio.com/de/gtc">AGB</a>
   </div>
   <div>© 2026 Striking Studio · Josefstrasse 92, 8005 Zürich</div>
@@ -876,6 +889,16 @@ MountBsportWidget({
     requestAnimationFrame(frame);
   }
   requestAnimationFrame(frame);
+})();
+</script>
+<script>
+(function(){
+  var v=document.getElementById('trailer'),b=document.getElementById('soundbtn');
+  if(!v||!b)return;
+  b.addEventListener('click',function(){
+    if(v.muted){v.currentTime=0;v.muted=false;v.play();b.style.background='var(--orange)';b.style.color='var(--ink)';}
+    else{v.muted=true;b.style.background='';b.style.color='';}
+  });
 })();
 </script>
 </body>

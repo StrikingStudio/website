@@ -417,6 +417,25 @@ footer a:hover{color:var(--ink)}
 .faq-photo{margin-top:26px;max-width:340px;border-radius:var(--r);overflow:hidden;aspect-ratio:3/4;background-size:cover;background-position:center 35%}
 .vphoto2{margin-top:28px;border-radius:var(--r);overflow:hidden;aspect-ratio:4/3;background-size:cover;background-position:center 25%}
 @media(max-width:860px){.rev-grid{grid-template-columns:1fr}.rphoto{aspect-ratio:4/3}.faq-photo{display:none}.vphoto2{display:none}}
+
+.hero-pts{list-style:none;margin-top:22px;display:flex;flex-direction:column;gap:9px}
+.hero-pts li{font-size:.95rem;color:var(--ink-soft);display:flex;align-items:baseline;gap:10px}
+.hero-pts li:before{content:"";width:7px;height:7px;border-radius:50%;background:var(--orange);flex:0 0 auto;transform:translateY(-1px)}
+#soundbtn{position:absolute;right:clamp(30px,3.5vw,52px);bottom:clamp(30px,3.5vw,52px);z-index:5;
+  width:46px;height:46px;border-radius:50%;border:0;cursor:pointer;background:rgba(20,16,12,.55);
+  color:#fff;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(6px);
+  transition:background .2s}
+#soundbtn:hover{background:var(--orange);color:var(--ink)}
+#soundbtn svg{width:20px;height:20px;display:block}
+@media(max-width:899px){#soundbtn{right:14px;bottom:14px}}
+.foundation{margin-top:clamp(24px,3vw,40px);display:grid;grid-template-columns:minmax(180px,260px) 1fr;
+  gap:clamp(20px,3vw,40px);align-items:center;background:var(--paper);border:1px solid var(--line);
+  border-radius:var(--r);overflow:hidden}
+.foundation .fimg{aspect-ratio:1/1;background-size:cover;background-position:center 35%;height:100%}
+.foundation .ftxt{padding:clamp(18px,2.5vw,30px) clamp(18px,3vw,40px) clamp(18px,2.5vw,30px) 0}
+.foundation h3{font-size:clamp(1.2rem,2vw,1.6rem);font-weight:600;letter-spacing:-.01em}
+.foundation p{margin-top:8px;font-size:.96rem;color:var(--ink-soft);max-width:60ch}
+@media(max-width:700px){.foundation{grid-template-columns:1fr}.foundation .fimg{aspect-ratio:16/9}.foundation .ftxt{padding:18px 20px 22px}}
 </style>
 </head>
 <body>
@@ -427,17 +446,17 @@ footer a:hover{color:var(--ink)}
 <nav class="nav" aria-label="Hauptnavigation"><div class="wrap nav-in">
   <a href="/" class="logo" aria-label="Striking Studio"><img class="lgimg" src="logo.png" alt="Striking Studio"></a>
   <div class="nav-links">
-    <a href="#lektion">How it works</a>
     <a href="#kurse">Classes</a>
-    <a href="#coaches">Coaches</a>
     <a href="#kursplan">Schedule</a>
+    <a href="#lektion">How it works</a>
+    <a href="#coaches">Coaches</a>
     <a href="preise-en.html">Pricing</a>
   </div>
   <button class="burger" id="burger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
   <div class="lang"><b>EN</b><span>/</span><a href="home-de.html">DE</a></div>
   <a href="#kursplan" class="btn" data-cta="nav">Free Trial Class</a>
 </div>
-<div class="mnav" id="mnav"><a href="#lektion">How it works</a><a href="#kurse">Classes</a><a href="#coaches">Coaches</a><a href="#kursplan">Schedule</a><a href="preise-en.html">Pricing</a><div class="mlang"><b>EN</b><span>/</span><a href="home-de.html">DE</a></div><a href="#kursplan" class="btn" data-cta="mnav">Free Trial Class</a></div></nav>
+<div class="mnav" id="mnav"><a href="#kurse">Classes</a><a href="#kursplan">Schedule</a><a href="#lektion">How it works</a><a href="#coaches">Coaches</a><a href="preise-en.html">Pricing</a><div class="mlang"><b>EN</b><span>/</span><a href="home-de.html">DE</a></div><a href="#kursplan" class="btn" data-cta="mnav">Free Trial Class</a></div></nav>
 
 <!-- ============ HERO ============ -->
 <header class="hero" id="top">
@@ -449,11 +468,13 @@ footer a:hover{color:var(--ink)}
         <span class="h-up"><span><span class="roto"><span>strong.</span><span>confident.</span><span>clear.</span></span></span></span>
       </h1>
       <p class="hero-sub h-fade">Hit hard – we'll show you how. 55 minutes on the heavy bag + strength training, no matter your level.</p>
+      <ul class="hero-pts h-fade"><li>Heavy bag + strength training: fit in weeks</li><li>Playlists, energy, endorphins</li><li>Coaches with pro careers – no contact</li></ul>
       <div class="hero-cta h-fade">
         <a href="#kursplan" class="btn" id="heroCta" data-cta="hero">Free Trial Class</a>
       </div>
     </div>
     <div class="hero-vid">
+      <button id="soundbtn" type="button" aria-label="Sound on" data-cta="trailer-sound"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" fill="currentColor" stroke="none"/><path class="w1" d="M15.5 8.5a5 5 0 0 1 0 7"/><path class="w2" d="M18.5 5.5a9 9 0 0 1 0 13"/></svg></button>
       <video id="trailer" src="striking-trailer-loop.mp4" poster="trailer-poster.jpg"
         autoplay muted loop playsinline preload="auto" aria-label="Training at Striking Studio Zürich"></video>
     </div>
@@ -461,54 +482,42 @@ footer a:hover{color:var(--ink)}
 </header>
 <div class="valueline">
   <div><span>No contact</span></div>
-  <div><span>All levels</span></div>
-  <div><span>55 minutes</span></div>
+  <div><span>Super fun</span></div>
+  <div><span>Strength &amp; endurance</span></div>
   <div><span>Gloves included</span></div>
 </div>
 
-<!-- ============ STRENGTH ============ -->
-<section class="strength"><div class="wrap strength-in">
-  <div>
-    <span class="kicker fx">This is Striking</span>
-    <h2><span class="rv"><span>Get in <em class="s">top shape.</em></span></span></h2>
-    <div class="tplist fx">
-<div class="tp"><h3>Fit and strong</h3><p>Heavy bag plus strength training in every class. Endurance, power, an athletic body – you feel it within two weeks.</p></div>
-<div class="tp"><h3>Energy that hooks you</h3><p>Great playlists, strong coaching and a team that makes you feel welcome. You leave full of endorphins.</p></div>
-<div class="tp"><h3>Real martial arts know-how</h3><p>Coaches from boxing, kickboxing and Muay Thai, some with professional careers. Real combinations, individual feedback – no contact, at your pace.</p></div>
-    </div>
-  </div>
-  <div class="sphoto fx" role="img" aria-label="Strength training at Striking Studio" style="background-image:url('fx-strength.jpg')"></div>
-</div></section>
 
-<!-- ============ DIE STUNDE ============ -->
-<section id="lektion"><div class="wrap">
+
+
+
+<!-- ============ REVIEWS ============ -->
+<section id="reviews"><div class="wrap">
   <div class="sec-head">
-    <span class="kicker fx">How it works</span>
-    <h2><span class="rv"><span>Your hour,</span></span>
-        <span class="rv"><span>round by <em class="s">round.</em></span></span></h2>
+    <span class="kicker fx">Reviews</span>
+    <h2><span class="rv"><span>What our <em class="s">members</em> say.</span></span></h2>
   </div>
-  <div class="journey" id="jr">
-    <svg class="path" viewBox="0 0 900 1330" preserveAspectRatio="none" aria-hidden="true">
-      <path id="swoosh" pathLength="1"
-        d="M740,75 C520,150 360,190 230,270 C90,360 480,380 690,455 C880,525 380,555 230,645 C90,730 480,750 690,835 C880,905 380,935 230,1025 C90,1110 480,1130 690,1215"/>
-    </svg>
-    <div class="stop"><span class="rn"><b>01</b>Meet your coach</span>
-      <p class="ds">Our friendly coaches welcome you and set you up with gloves and wraps.</p></div>
-    <div class="stop"><span class="rn"><b>02</b>Warm-Up</span>
-      <p class="ds">Jump rope to settle in. Then stance, footwork and the day’s combination.</p></div>
-    <div class="stop"><span class="rn"><b>03</b>Technique</span>
-      <p class="ds">Shadow boxing. Sharpen your timing, hands up.</p></div>
-    <div class="stop"><span class="rn"><b>04</b>Heavy Bag</span>
-      <p class="ds">Drill the combination into the bag. Round after round.</p></div>
-    <div class="stop"><span class="rn"><b>05</b>Strength</span>
-      <p class="ds">Squats, push-ups, rows. Short and sharp, no machines.</p></div>
-    <div class="stop"><span class="rn"><b>06</b>Finisher</span>
-      <p class="ds">Two tabatas, all out. Fast hands, kicks, abs.</p></div>
-    <div class="stop"><span class="rn"><b>07</b>Cool Down</span>
-      <p class="ds">Stretch, breathe. Done.</p></div>
-  </div>
-  <p class="stunde-foot quiet">You set the pace, and your coach is with you the whole way.</p>
-  <p class="stunde-foot quiet">Fitness Boxing, Fitness Kickboxing or Fitness Muay Thai – same structure, your choice, switch anytime.</p>
+  <div class="rev-grid"><div class="rphoto fx" role="img" aria-label="Members at Striking Studio" style="background-image:url('fx-members.jpg')"></div><div class="reviews">
+    <blockquote class="rev fx">
+      <div class="stars" aria-label="5 von 5 Sternen">★★★★★</div>
+      <p>«Super Studio! Die Trainer:innen sind top ausgebildet, gehen individuell auf das Level
+      jeder Person ein und erklären Technik wirklich sauber. Kann ich nur empfehlen»</p>
+      
+<footer>Sheyla Sampietro<span>Google review</span></footer>
+    </blockquote>
+    <blockquote class="rev fx">
+      <div class="stars" aria-label="5 von 5 Sternen">★★★★★</div>
+      <p>«Great instructors, friendly atmosphere and amazing workout. Suitable for beginners
+      and more experienced people»</p>
+      <footer>Markus Chamber<span>Google review</span></footer>
+    </blockquote>
+    <blockquote class="rev fx">
+      <div class="stars" aria-label="5 von 5 Sternen">★★★★★</div>
+      <p>«Fantastic club with a great atmosphere. Clean, well equipped, and everyone was super
+      welcoming and supportive. Highly recommended!»</p>
+      <footer>Paula Strunden<span>Google review</span></footer>
+    </blockquote>
+  </div></div>
 </div></section>
 
 <!-- ============ KURSE ============ -->
@@ -547,38 +556,13 @@ footer a:hover{color:var(--ink)}
           <div class="more"><p>Fists, elbows, knees, shins: Muay Thai uses everything. Your bag, your pace – and the coach stays with you.</p><p class="bene">Full Striking · Max Intensity</p></div></div>
       </article>
   </div>
+
+  <div class="foundation fx"><div class="fimg" role="img" aria-label="Strength training at Striking Studio" style="background-image:url('fx-strength.jpg')"></div><div class="ftxt"><span class="kicker" style="margin-bottom:8px">The foundation</span><h3>Strength &amp; endurance – built into every class.</h3><p>Squats, push-ups and core between the rounds. Whichever class you pick: you get strong, not just fast.</p></div></div>
 </div></section>
 
 
 
-<!-- ============ REVIEWS ============ -->
-<section id="reviews"><div class="wrap">
-  <div class="sec-head">
-    <span class="kicker fx">Reviews</span>
-    <h2><span class="rv"><span>What our <em class="s">members</em> say.</span></span></h2>
-  </div>
-  <div class="rev-grid"><div class="rphoto fx" role="img" aria-label="Members at Striking Studio" style="background-image:url('fx-members.jpg')"></div><div class="reviews">
-    <blockquote class="rev fx">
-      <div class="stars" aria-label="5 von 5 Sternen">★★★★★</div>
-      <p>«Super Studio! Die Trainer:innen sind top ausgebildet, gehen individuell auf das Level
-      jeder Person ein und erklären Technik wirklich sauber. Kann ich nur empfehlen»</p>
-      
-<footer>Sheyla Sampietro<span>Google review</span></footer>
-    </blockquote>
-    <blockquote class="rev fx">
-      <div class="stars" aria-label="5 von 5 Sternen">★★★★★</div>
-      <p>«Great instructors, friendly atmosphere and amazing workout. Suitable for beginners
-      and more experienced people»</p>
-      <footer>Markus Chamber<span>Google review</span></footer>
-    </blockquote>
-    <blockquote class="rev fx">
-      <div class="stars" aria-label="5 von 5 Sternen">★★★★★</div>
-      <p>«Fantastic club with a great atmosphere. Clean, well equipped, and everyone was super
-      welcoming and supportive. Highly recommended!»</p>
-      <footer>Paula Strunden<span>Google review</span></footer>
-    </blockquote>
-  </div></div>
-</div></section>
+
 
 <!-- ============ KURSPLAN ============ -->
 <section id="kursplan"><div class="wrap">
@@ -586,7 +570,7 @@ footer a:hover{color:var(--ink)}
     <span class="kicker fx">Schedule</span>
     <h2><span class="rv"><span>Pick your</span></span>
         <span class="rv"><span>first <em class="s">class.</em></span></span></h2>
-    <p class="lede fx">Pick a time that suits you – Fitness Boxing, Fitness Kickboxing or Fitness Muay Thai. Your first class is on us.</p>
+    <p class="lede fx">Pick a time that suits you – Fitness Boxing, Fitness Kickboxing or Fitness Muay Thai. Your first class is on us. Free, no subscription, nothing to bring – come as you are.</p>
   </div>
   <!-- BSPORT-WIDGET: Embed-Code hier einsetzen, ersetzt den Inhalt von #bsport-widget -->
   <div id="bsport-widget" class="fx">
@@ -595,27 +579,35 @@ footer a:hover{color:var(--ink)}
   </div>
 </div></section>
 
-<!-- ============ PATH + PRICING ============ -->
-<section class="pathsec" id="preise"><div class="wrap">
+<!-- ============ DIE STUNDE ============ -->
+<section id="lektion"><div class="wrap">
   <div class="sec-head">
-    <span class="kicker fx">Pricing</span>
-    <h2><span class="rv"><span>Try it <em class="s">first.</em></span></span>
-        <span class="rv"><span>Then decide.</span></span></h2>
-    <p class="lede fx">No contracts, no sales talk. Come in, train for free –
-    and decide in your own time.</p>
+    <span class="kicker fx">How it works</span>
+    <h2><span class="rv"><span>Your hour,</span></span>
+        <span class="rv"><span>round by <em class="s">round.</em></span></span></h2>
   </div>
-  <div class="path">
-    <div class="pstep hi slide"><span class="n">Step 1</span><div class="v">Free</div>
-      <h3>Trial class</h3><p>One full class, free. Gloves and wraps
-      are waiting for you.</p></div>
-    <div class="pstep slide"><span class="n">Step 2</span><div class="v">−50%</div>
-      <h3>First month</h3><p>Like it? Your first month at half price –
-      from CHF 59.50 instead of CHF 119.</p></div>
-    <div class="pstep slide"><span class="n">Step 3</span><div class="v">Flexible</div>
-      <h3>Membership</h3><p>Cancel anytime. No minimum term,
-      no fine print.</p></div>
+  <div class="journey" id="jr">
+    <svg class="path" viewBox="0 0 900 1330" preserveAspectRatio="none" aria-hidden="true">
+      <path id="swoosh" pathLength="1"
+        d="M740,75 C520,150 360,190 230,270 C90,360 480,380 690,455 C880,525 380,555 230,645 C90,730 480,750 690,835 C880,905 380,935 230,1025 C90,1110 480,1130 690,1215"/>
+    </svg>
+    <div class="stop"><span class="rn"><b>01</b>Meet your coach</span>
+      <p class="ds">Our friendly coaches welcome you and set you up with gloves and wraps.</p></div>
+    <div class="stop"><span class="rn"><b>02</b>Warm-Up</span>
+      <p class="ds">Jump rope to settle in. Then stance, footwork and the day’s combination.</p></div>
+    <div class="stop"><span class="rn"><b>03</b>Technique</span>
+      <p class="ds">Shadow boxing. Sharpen your timing, hands up.</p></div>
+    <div class="stop"><span class="rn"><b>04</b>Heavy Bag</span>
+      <p class="ds">Drill the combination into the bag. Round after round.</p></div>
+    <div class="stop"><span class="rn"><b>05</b>Strength</span>
+      <p class="ds">Squats, push-ups, rows. Short and sharp, no machines.</p></div>
+    <div class="stop"><span class="rn"><b>06</b>Finisher</span>
+      <p class="ds">Two tabatas, all out. Fast hands, kicks, abs.</p></div>
+    <div class="stop"><span class="rn"><b>07</b>Cool Down</span>
+      <p class="ds">Stretch, breathe. Done.</p></div>
   </div>
-  <p class="pricing-foot fx">Single class, no membership: CHF 39 · <a href="preise-en.html" class="arrowlink" data-cta="preise-page">See all prices →</a></p>
+  <p class="stunde-foot quiet">You set the pace, and your coach is with you the whole way.</p>
+  <p class="stunde-foot quiet">Fitness Boxing, Fitness Kickboxing or Fitness Muay Thai – same structure, your choice, switch anytime.</p>
 </div></section>
 
 <!-- ============ COACHES ============ -->
@@ -663,6 +655,31 @@ footer a:hover{color:var(--ink)}
   </div>
   <div class="car-nav"><button type="button" data-car="tcarou" data-dir="-1" aria-label="zurück">←</button><button type="button" data-car="tcarou" data-dir="1" aria-label="weiter">→</button></div>
 </div></section>
+
+<!-- ============ PATH + PRICING ============ -->
+<section class="pathsec" id="preise"><div class="wrap">
+  <div class="sec-head">
+    <span class="kicker fx">Pricing</span>
+    <h2><span class="rv"><span>Try it <em class="s">first.</em></span></span>
+        <span class="rv"><span>Then decide.</span></span></h2>
+    <p class="lede fx">No contracts, no sales talk. Come in, train for free –
+    and decide in your own time.</p>
+  </div>
+  <div class="path">
+    <div class="pstep hi slide"><span class="n">Step 1</span><div class="v">Free</div>
+      <h3>Trial class</h3><p>One full class, free. Gloves and wraps
+      are waiting for you.</p></div>
+    <div class="pstep slide"><span class="n">Step 2</span><div class="v">−50%</div>
+      <h3>First month</h3><p>Like it? Your first month at half price –
+      from CHF 59.50 instead of CHF 119.</p></div>
+    <div class="pstep slide"><span class="n">Step 3</span><div class="v">Flexible</div>
+      <h3>Membership</h3><p>Cancel anytime. No minimum term,
+      no fine print.</p></div>
+  </div>
+  <p class="pricing-foot fx">Single class, no membership: CHF 39 · <a href="preise-en.html" class="arrowlink" data-cta="preise-page">See all prices →</a></p>
+</div></section>
+
+
 
 <!-- ============ FAQ ============ -->
 <section id="faq"><div class="wrap faq-grid">
@@ -726,8 +743,8 @@ footer a:hover{color:var(--ink)}
 
 <footer><div class="wrap foot">
   <div>
-    <a href="#lektion">How it works</a><a href="#kurse">Courses</a><a href="#coaches">Coaches</a>
-    <a href="#kursplan">Schedule</a><a href="preise-en.html">Pricing</a>
+    <a href="#kurse">Courses</a><a href="#kursplan">Schedule</a><a href="#lektion">How it works</a>
+    <a href="#coaches">Coaches</a><a href="preise-en.html">Pricing</a>
     <a href="https://www.strikingstudio.com/en/career">Careers</a><a href="https://www.strikingstudio.com/en/gtc">Terms</a>
   </div>
   <div>© 2026 Striking Studio · Josefstrasse 92, 8005 Zürich</div>
@@ -875,6 +892,16 @@ MountBsportWidget({
     requestAnimationFrame(frame);
   }
   requestAnimationFrame(frame);
+})();
+</script>
+<script>
+(function(){
+  var v=document.getElementById('trailer'),b=document.getElementById('soundbtn');
+  if(!v||!b)return;
+  b.addEventListener('click',function(){
+    if(v.muted){v.currentTime=0;v.muted=false;v.play();b.style.background='var(--orange)';b.style.color='var(--ink)';}
+    else{v.muted=true;b.style.background='';b.style.color='';}
+  });
 })();
 </script>
 </body>
