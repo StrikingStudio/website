@@ -427,14 +427,22 @@ footer a:hover{color:var(--ink)}
 #soundbtn.on{background:var(--orange);color:var(--ink)}
 #soundbtn svg{width:20px;height:20px;display:block}
 @media(max-width:899px){#soundbtn{bottom:14px;padding:11px 18px}}
-.foundation{margin-top:clamp(24px,3vw,40px);display:grid;grid-template-columns:minmax(180px,260px) 1fr;
+.foundation{position:relative;margin-top:0;display:grid;grid-template-columns:minmax(180px,260px) 1fr;
   gap:clamp(20px,3vw,40px);align-items:center;background:var(--paper);border:1px solid var(--line);
   border-radius:var(--r);overflow:hidden}
-.foundation .fimg{aspect-ratio:1/1;background-size:cover;background-position:center 55%;height:100%}
+.foundation .fimg{aspect-ratio:1/1;background-size:cover;background-position:center;height:100%}
 .foundation .ftxt{padding:clamp(18px,2.5vw,30px) clamp(18px,3vw,40px) clamp(18px,2.5vw,30px) 0}
 .foundation h3{font-size:clamp(1.2rem,2vw,1.6rem);font-weight:600;letter-spacing:-.01em}
 .foundation p{margin-top:8px;font-size:.96rem;color:var(--ink-soft);max-width:60ch}
-@media(max-width:700px){.foundation{grid-template-columns:1fr}.foundation .fimg{aspect-ratio:4/3;background-position:center 52%}.foundation .ftxt{padding:18px 20px 22px}}
+@media(max-width:700px){.foundation{grid-template-columns:1fr}.foundation .fimg{aspect-ratio:4/3;background-position:center}.foundation .ftxt{padding:18px 20px 22px}}
+
+.flines{display:grid;grid-template-columns:repeat(3,1fr);height:54px}
+.flines i{justify-self:center;width:3px;height:100%;background:var(--orange);border-radius:2px;
+  transform:scaleY(0);transform-origin:top center;display:block}
+.fbar{position:absolute;top:0;left:0;right:0;height:5px;background:var(--orange);
+  transform:scaleX(0);transform-origin:0 50%}
+@media(max-width:860px){.flines{display:none}}
+@media(prefers-reduced-motion:reduce){.flines i{transform:none}.fbar{transform:none}}
 </style>
 </head>
 <body>
@@ -555,7 +563,8 @@ footer a:hover{color:var(--ink)}
       </article>
   </div>
 
-  <div class="foundation fx"><div class="fimg" role="img" aria-label="Strength training at Striking Studio" style="background-image:url('fx-strength.jpg')"></div><div class="ftxt"><span class="kicker" style="margin-bottom:8px">The foundation</span><h3>Strength &amp; endurance – built into every class.</h3><p>Squats, push-ups and core between the rounds. Whichever class you pick: you get in top shape, not just skilled.</p></div></div>
+  <div class="flines" aria-hidden="true"><i></i><i></i><i></i></div>
+  <div class="foundation fx"><span class="fbar" aria-hidden="true"></span><div class="fimg" role="img" aria-label="Strength training at Striking Studio" style="background-image:url('fx-strength.jpg')"></div><div class="ftxt"><span class="kicker" style="margin-bottom:8px">The foundation</span><h3>Strength &amp; endurance – built into every class.</h3><p>Squats, push-ups and core between the rounds. Whichever class you pick: you get in top shape, not just skilled.</p></div></div>
 </div></section>
 
 
@@ -901,6 +910,27 @@ MountBsportWidget({
     if(v.muted){v.currentTime=0;v.muted=false;v.volume=1;v.play();lb.textContent='Mute';b.classList.add('on');}
     else{v.muted=true;lb.textContent='Play with sound';b.classList.remove('on');}
   });
+})();
+</script>
+
+<script>
+/* Fundament: Traglinien + Balken, scroll-gekoppelt */
+(function(){
+  var found=document.querySelector('.foundation');
+  if(!found)return;
+  var lines=[].slice.call(document.querySelectorAll('.flines i')),
+      bar=found.querySelector('.fbar'),
+      reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(reduce)return;
+  function cl(x){return Math.min(1,Math.max(0,x));}
+  function frame(){
+    var r=found.getBoundingClientRect(),vh=innerHeight;
+    var p=cl((vh*0.92-r.top)/(vh*0.55));
+    lines.forEach(function(l,i){l.style.transform='scaleY('+cl((p-0.12*i)/0.45)+')';});
+    if(bar)bar.style.transform='scaleX('+cl((p-0.5)/0.5)+')';
+    requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
 })();
 </script>
 </body>
