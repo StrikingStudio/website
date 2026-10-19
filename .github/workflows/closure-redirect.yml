@@ -1,0 +1,48 @@
+name: Closure redirect
+
+# Striking Studio closed. Deploys a site where every page forwards to IMPACT Fitness Kickboxing Zurich.
+# To restore the old site: Settings > Pages > Source > Deploy from a branch (main).
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build redirect site
+        run: |
+          DE="https://www.impact-martialarts.com/zurich/kurse/fitness-kickboxen/"
+          EN="https://www.impact-martialarts.com/en/zurich/classes/fitness-kickboxing/"
+          stub() {
+            printf '<!doctype html><html><head><meta charset="utf-8"><title>Striking Studio</title><meta name="robots" content="noindex"><link rel="canonical" href="%s"><meta http-equiv="refresh" content="0; url=%s"><script>location.replace("%s")</script></head><body><a href="%s">IMPACT Martial Arts</a></body></html>\n' "$1" "$1" "$1" "$1"
+          }
+          mkdir -p _site
+          cp CNAME _site/
+          find . -name "*.html" -not -path "./_site/*" -not -path "./.git/*" | while read -r f; do
+            t="$DE"
+            case "$f" in ./en/*|*-en.html|./index.html|./trial.html) t="$EN";; esac
+            mkdir -p "_site/$(dirname "$f")"
+            stub "$t" > "_site/$f"
+          done
+          stub "$DE" > _site/404.html
+          ls -R _site
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+      - id: deployment
+        uses: actions/deploy-pages@v4
